@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050a08">
+<title>YASSER TUNEL | YASSER TECH SOLUTIONS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+ --green:#00ff9c;
+ --green2:#00c878;
+ --dark:#050a08;
+ --panel:#0b1510;
+ --panel2:#101d16;
+ --muted:#84958b;
+ --border:#193528;
+ --gold:#ffca55;
+ --white:#f2fff8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:'DM Sans',sans-serif;
+ background:var(--dark);
+ color:var(--white);
+ min-height:100vh;
+ padding-bottom:100px;
+ overflow-x:hidden;
+}
+button,input{font:inherit}
+button{cursor:pointer;border:0}
+button:focus-visible,input:focus-visible{
+ outline:2px solid var(--green);
+ outline-offset:3px;
+}
+::selection{background:var(--green);color:#00140c}
+/* BACKGROUND */
+#matrix{
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ opacity:.12;
+ pointer-events:none;
+ z-index:0;
+}
+.bg-glow{
+ position:fixed;
+ width:300px;
+ height:300px;
+ border-radius:50%;
+ filter:blur(110px);
+ pointer-events:none;
+ z-index:0;
+ opacity:.12;
+}
+.glow-one{background:#00ff9c;top:10%;left:-180px}
+.glow-two{background:#00aaff;right:-180px;bottom:10%}
+.container{
+ position:relative;
+ z-index:1;
+ width:100%;
+ max-width:650px;
+ margin:auto;
+ padding:0 17px 20px;
+}
+/* STICKY HEADER */
+.header{
+ position:sticky;
+ top:0;
+ z-index:80;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+ padding:12px 17px 14px;
+ margin:0 -17px 23px;
+ background:rgba(5,10,8,.94);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(0,255,156,.18);
+ box-shadow:0 8px 25px #0005;
+}
+.brand{
+ display:flex;
+ align-items:center;
+ gap:11px;
+ min-width:0;
+}
+.profile{
+ width:47px;
+ height:47px;
+ border-radius:14px;
+ object-fit:cover;
+ border:1px solid var(--green);
+ box-shadow:0 0 14px #00ff9c55;
+ background:#10251a;
+}
+.brand h2{
+ font-family:'Orbitron',sans-serif;
+ font-size:15px;
+ letter-spacing:1px;
+ color:var(--green);
+ white-space:nowrap;
+ text-shadow:0 0 12px #00ff9c66;
+}
+.brand p{
+ font-size:8px;
+ color:#91a99b;
+ letter-spacing:1px;
+ margin-top:5px;
+ font-weight:700;
+}
+.notification-btn{
+ position:relative;
+ width:43px;
+ height:43px;
+ flex-shrink:0;
+ border-radius:13px;
+ background:var(--panel2);
+ border:1px solid var(--border);
+ color:var(--green);
+ font-size:17px;
+ transition:.3s;
+}
+.notification-btn:active{transform:scale(.9)}
+.notification-btn:hover{box-shadow:0 0 15px #00ff9c44}
+.notification-dot{
+ position:absolute;
+ width:8px;
+ height:8px;
+ background:#ff4545;
+ border-radius:50%;
+ top:8px;
+ right:8px;
+ box-shadow:0 0 10px red;
+ animation:pulse 1.3s infinite;
+}
+.hidden{display:none!important}
+/* HERO */
+.hero{
+ position:relative;
+ overflow:hidden;
+ padding:27px 22px;
+ border-radius:22px;
+ margin-bottom:24px;
+ border:1px solid #00ff9c55;
+ background:
+ radial-gradient(circle at 90% 10%,#00ff9c25,transparent 40%),
+ linear-gradient(130deg,#071c12,#0b3020 65%,#07150e);
+ box-shadow:0 0 28px #00ff9c12;
+ animation:fadeUp .7s ease both;
+}
+.hero:before{
+ content:"";
+ position:absolute;
+ inset:-100%;
+ background:linear-gradient(110deg,transparent 45%,#ffffff0a 50%,transparent 55%);
+ animation:shine 7s linear infinite;
+}
+.hero-label{
+ display:inline-flex;
+ align-items:center;
+ gap:8px;
+ background:#00ff9c17;
+ color:var(--green);
+ border:1px solid #00ff9c44;
+ border-radius:30px;
+ padding:8px 12px;
+ font-size:9px;
+ font-weight:800;
+ letter-spacing:1px;
+ margin-bottom:17px;
+}
+.live-dot{
+ width:7px;
+ height:7px;
+ border-radius:50%;
+ background:var(--green);
+ box-shadow:0 0 10px var(--green);
+ animation:pulse 1.4s infinite;
+}
+.hero h1{
+ position:relative;
+ font-family:'Orbitron',sans-serif;
+ font-size:25px;
+ line-height:1.5;
+ letter-spacing:.5px;
+ max-width:300px;
+ margin-bottom:9px;
+}
+.hero h1 span{color:var(--green)}
+.hero p{
+ position:relative;
+ max-width:270px;
+ font-size:12px;
+ color:#a8c1b2;
+ line-height:1.8;
+}
+.hero-icon{
+ position:absolute;
+ right:19px;
+ bottom:24px;
+ font-size:65px;
+ color:#00ff9c27;
+ animation:float 4s ease-in-out infinite;
+}
+.hero-bottom{
+ margin-top:19px;
+ display:flex;
+ align-items:center;
+ gap:8px;
+ font-size:9px;
+ color:#9db6a7;
+ letter-spacing:1px;
+}
+/* SEARCH */
+.search-box{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:15px;
+ border-radius:14px;
+ background:var(--panel);
+ border:1px solid var(--border);
+ margin-bottom:25px;
+ transition:.3s;
+}
+.search-box:focus-within{
+ border-color:var(--green);
+ box-shadow:0 0 18px #00ff9c20;
+}
+.search-box i{color:var(--green)}
+.search-box input{
+ width:100%;
+ outline:none;
+ border:0;
+ background:transparent;
+ color:white;
+ font-size:13px;
+}
+.search-box input::placeholder{color:#687a70}
+/* SECTION */
+.section-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:14px;
+}
+.section-head h3{
+ font-size:16px;
+ font-weight:800;
+}
+.section-head button{
+ background:none;
+ color:var(--green);
+ font-size:11px;
+ font-weight:800;
+}
+.section-head h3:before{
+ content:"";
+ display:inline-block;
+ width:4px;
+ height:16px;
+ background:var(--green);
+ border-radius:5px;
+ margin-right:9px;
+ vertical-align:-3px;
+ box-shadow:0 0 9px var(--green);
+}
+/* CATEGORIES */
+.categories{
+ display:flex;
+ gap:9px;
+ overflow-x:auto;
+ padding:2px 1px 12px;
+ margin-bottom:22px;
+ scrollbar-width:none;
+}
+.categories::-webkit-scrollbar{display:none}
+.category{
+ flex-shrink:0;
+ white-space:nowrap;
+ padding:11px 16px;
+ border-radius:11px;
+ color:#9aaca0;
+ background:var(--panel);
+ border:1px solid var(--border);
+ font-size:11px;
+ font-weight:800;
+ transition:.3s;
+}
+.category.active{
+ background:var(--green);
+ border-color:var(--green);
+ color:#00170d;
+ box-shadow:0 0 17px #00ff9c40;
+}
+/* VPN CARDS */
+.vpn-list{display:grid;gap:13px}
+.vpn-card{
+ position:relative;
+ overflow:hidden;
+ background:linear-gradient(135deg,#0c1911,#09110d);
+ border:1px solid var(--border);
+ padding:16px;
+ border-radius:17px;
+ transition:transform .25s,border-color .25s,box-shadow .25s;
+ animation:fadeUp .45s ease both;
+}
+.vpn-card:before{
+ content:"";
+ position:absolute;
+ top:0;
+ left:0;
+ width:3px;
+ height:100%;
+ background:var(--green);
+ opacity:.7;
+}
+.vpn-card:hover{
+ transform:translateY(-3px);
+ border-color:#00ff9c77;
+ box-shadow:0 8px 25px #00ff9c12;
+}
+.card-top{
+ display:flex;
+ align-items:center;
+ gap:12px;
+}
+.vpn-icon{
+ width:48px;
+ height:48px;
+ flex-shrink:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:14px;
+ background:#00ff9c12;
+ border:1px solid #00ff9c30;
+ color:var(--green);
+ font-size:20px;
+}
+.vpn-info{flex:1;min-width:0}
+.vpn-info h4{
+ font-size:14px;
+ font-weight:800;
+ margin-bottom:5px;
+ overflow-wrap:anywhere;
+}
+.vpn-info p{color:var(--muted);font-size:10px}
+.tag{
+ padding:6px 9px;
+ border-radius:20px;
+ background:#00ff9c17;
+ color:var(--green);
+ font-size:8px;
+ font-weight:900;
+ letter-spacing:.5px;
+ white-space:nowrap;
+}
+.tag.paid{
+ background:#ffca5518;
+ color:var(--gold);
+ border:1px solid #ffca5530;
+}
+.card-bottom{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ border-top:1px solid #ffffff0c;
+ margin-top:15px;
+ padding-top:13px;
+}
+.price{font-size:12px;font-weight:900}
+.price small{
+ display:block;
+ color:var(--muted);
+ font-size:9px;
+ margin-top:4px;
+ font-weight:500;
+}
+.view-btn{
+ background:var(--green);
+ color:#00180d;
+ padding:10px 15px;
+ border-radius:9px;
+ font-size:10px;
+ font-weight:900;
+ transition:.3s;
+}
+.view-btn:hover{
+ box-shadow:0 0 17px #00ff9c66;
+ transform:scale(1.04);
+}
+.view-btn:active{transform:scale(.94)}
+/* EMPTY & LOADING */
+.empty{
+ text-align:center;
+ padding:35px 15px;
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:16px;
+ color:var(--muted);
+ font-size:12px;
+}
+.empty i{
+ display:block;
+ color:var(--green);
+ font-size:28px;
+ margin-bottom:13px;
+}
+.loading{
+ text-align:center;
+ padding:30px;
+ color:var(--muted);
+ font-size:12px;
+}
+.loading i{
+ color:var(--green);
+ margin-right:8px;
+}
+/* PAGES */
+.page{display:none}
+.page.active{
+ display:block;
+ animation:pageIn .35s ease both;
+}
+.page-title{
+ font-family:'Orbitron',sans-serif;
+ font-size:19px;
+ color:var(--green);
+ margin:9px 0 17px;
+}
+.page-description{
+ color:var(--muted);
+ font-size:11px;
+ line-height:1.7;
+ margin-bottom:20px;
+}
+/* NOTIFICATIONS */
+.notice{
+ display:flex;
+ gap:12px;
+ background:var(--panel);
+ border:1px solid var(--border);
+ padding:15px;
+ border-radius:14px;
+ margin-bottom:12px;
+ animation:fadeUp .4s ease both;
+}
+.notice-icon{
+ width:39px;
+ height:39px;
+ flex-shrink:0;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ border-radius:12px;
+ background:#00ff9c14;
+ color:var(--green);
+}
+.notice h4{font-size:12px;margin-bottom:6px}
+.notice p{
+ color:#9aaca0;
+ font-size:11px;
+ line-height:1.7;
+ overflow-wrap:anywhere;
+}
+.notice time{
+ display:block;
+ color:#66796d;
+ font-size:9px;
+ margin-top:7px;
+}
+/* ABOUT */
+.about-card{
+ text-align:center;
+ padding:28px 20px;
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:20px;
+}
+.about-logo{
+ width:75px;
+ height:75px;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border:1px solid var(--green);
+ border-radius:22px;
+ color:var(--green);
+ font-size:33px;
+ box-shadow:0 0 25px #00ff9c30;
+ animation:float 3s ease-in-out infinite;
+}
+.about-card h2{
+ font-family:'Orbitron',sans-serif;
+ color:var(--green);
+ font-size:17px;
+ margin-top:17px;
+}
+.about-card p{
+ font-size:11px;
+ line-height:1.9;
+ color:var(--muted);
+ margin-top:12px;
+}
+.about-credit{
+ margin-top:20px;
+ padding:13px;
+ border:1px solid var(--border);
+ border-radius:12px;
+ color:var(--green);
+ font-size:10px;
+}
+/* FOOTER */
+footer{
+ text-align:center;
+ color:#64776b;
+ font-size:9px;
+ line-height:2;
+ margin-top:35px;
+ padding-bottom:15px;
+}
+footer strong{color:var(--green)}
+/* BOTTOM NAVIGATION */
+.bottom-nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ width:100%;
+ z-index:90;
+ background:rgba(5,10,8,.96);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
+ border-top:1px solid #00ff9c25;
+ padding-bottom:env(safe-area-inset-bottom);
+}
+.nav-inner{
+ width:100%;
+ max-width:650px;
+ margin:auto;
+ display:flex;
+ justify-content:space-around;
+ padding:11px 4px 9px;
+}
+.nav-item{
+ min-width:55px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:5px;
+ color:#728379;
+ background:none;
+ font-size:9px;
+ font-weight:800;
+ transition:.3s;
+}
+.nav-item i{font-size:17px}
+.nav-item.active{
+ color:var(--green);
+ text-shadow:0 0 12px #00ff9c77;
+}
+.nav-item.active i{
+ animation:navBounce .4s ease;
+}
+.nav-item:active{transform:scale(.9)}
+/* MODAL */
+.modal{
+ position:fixed;
+ inset:0;
+ z-index:110;
+ display:none;
+ align-items:flex-end;
+ justify-content:center;
+ background:#000c;
+ backdrop-filter:blur(5px);
+}
+.modal.show{display:flex}
+.modal-content{
+ width:100%;
+ max-width:550px;
+ max-height:85vh;
+ overflow-y:auto;
+ background:#0b1710;
+ border:1px solid #00ff9c44;
+ border-bottom:0;
+ border-radius:24px 24px 0 0;
+ padding:23px 20px 35px;
+ animation:slideUp .3s ease;
+ box-shadow:0 -10px 50px #00ff9c15;
+}
+.modal-close{
+ float:right;
+ width:35px;
+ height:35px;
+ border-radius:50%;
+ background:#17251d;
+ color:white;
+}
+.modal-content h2{
+ font-family:'Orbitron',sans-serif;
+ font-size:17px;
+ color:var(--green);
+ margin:15px 0 10px;
+ overflow-wrap:anywhere;
+}
+.modal-content p{
+ font-size:11px;
+ color:#9aaca0;
+ line-height:1.8;
+ margin-bottom:16px;
+ overflow-wrap:anywhere;
+}
+.modal-details{
+ background:#101f16;
+ padding:15px;
+ border-radius:13px;
+ border:1px solid var(--border);
+ margin-bottom:15px;
+}
+.modal-details p{margin:0 0 9px;font-size:11px}
+.modal-details p:last-child{margin-bottom:0}
+.modal-details strong{color:var(--green)}
+.modal-action{
+ width:100%;
+ padding:14px;
+ border-radius:11px;
+ background:var(--green);
+ color:#00180d;
+ font-weight:900;
+ font-size:12px;
+ margin-top:5px;
+ transition:.3s;
+}
+.modal-action:disabled{
+ opacity:.45;
+ cursor:not-allowed;
+}
+.modal-action:not(:disabled):active{transform:scale(.97)}
+/* ANIMATIONS */
+@keyframes pulse{
+ 0%,100%{opacity:1;transform:scale(1)}
+ 50%{opacity:.45;transform:scale(.75)}
+}
+@keyframes float{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-10px)}
+}
+@keyframes fadeUp{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@keyframes pageIn{
+ from{opacity:0;transform:translateY(9px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@keyframes slideUp{
+ from{transform:translateY(100%)}
+ to{transform:translateY(0)}
+}
+@keyframes shine{
+ from{transform:translateX(-30%) rotate(20deg)}
+ to{transform:translateX(30%) rotate(20deg)}
+}
+@keyframes navBounce{
+ 0%{transform:scale(.7)}
+ 70%{transform:scale(1.2)}
+ 100%{transform:scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{
+  animation-duration:.01ms!important;
+  animation-iteration-count:1!important;
+  scroll-behavior:auto!important;
+ }
+}
+@media(min-width:600px){
+ .container{padding-top:0}
+ .header{padding-top:17px;padding-bottom:17px}
+ .hero{padding:35px 28px}
+ .hero h1{font-size:29px}
+}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+<div class="container">
+<header class="header">
+ <div class="brand">
+  <img class="profile"
+   src="https://tmpfiles.org/dl/wQAw0GZqymzm/emmyhenz_1794408284016_kr2n6j.jpg"
+   alt="Yasser Tech"
+   onerror="this.style.display='none'">
+  <div>
+   <h2>YASSER TUNEL</h2>
+   <p>POWERED BY YASSER TECH SOLUTIONS</p>
+  </div>
+ </div>
+ <button class="notification-btn"
+  onclick="showPage('notifications')"
+  aria-label="Notifications">
+  <i class="fa-regular fa-bell"></i>
+  <span class="notification-dot hidden" id="notificationDot"></span>
+ </button>
+</header>
+<!-- HOME -->
+<main id="homePage" class="page active">
+ <section class="hero">
+  <div class="hero-label">
+   <span class="live-dot"></span>
+   CYBER VPN COLLECTION
+  </div>
+  <h1>YOUR INTERNET.<br><span>YOUR FREEDOM.</span></h1>
+  <p>Discover our VPN collection. Explore available free and premium VPN information in one place.</p>
+  <i class="fa-solid fa-shield-halved hero-icon"></i>
+  <div class="hero-bottom">
+   <i class="fa-solid fa-bolt"></i>
+   POWERED BY YASSER TECH SOLUTIONS
+  </div>
+ </section>
+ <div class="search-box">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" id="searchInput"
+   placeholder="Search VPN..."
+   oninput="renderVPN()">
+  <i class="fa-solid fa-terminal"></i>
+ </div>
+ <div class="section-head">
+  <h3>Categories</h3>
+ </div>
+ <div class="categories">
+  <button class="category active" onclick="filterCategory('All',this)">ALL</button>
+  <button class="category" onclick="filterCategory('Free',this)">FREE VPN</button>
+  <button class="category" onclick="filterCategory('Paid',this)">PREMIUM</button>
+  <button class="category" onclick="filterCategory('Android',this)">ANDROID</button>
+  <button class="category" onclick="filterCategory('iOS',this)">iOS</button>
+ </div>
+ <div class="section-head">
+  <h3 id="listTitle">Latest VPNs</h3>
+  <button onclick="filterCategory('All',document.querySelector('.category'))">VIEW ALL <i class="fa-solid fa-arrow-right"></i></button>
+ </div>
+ <div id="vpnList" class="vpn-list">
+  <div class="loading">
+   <i class="fa-solid fa-circle-notch fa-spin"></i>
+   Connecting to server...
+  </div>
+ </div>
+</main>
+<!-- FREE -->
+<main id="freePage" class="page">
+ <h2 class="page-title">FREE VPN</h2>
+ <p class="page-description">Explore available free VPN information.</p>
+ <div id="freeList" class="vpn-list"></div>
+</main>
+<!-- PREMIUM -->
+<main id="paidPage" class="page">
+ <h2 class="page-title">PREMIUM VPN</h2>
+ <p class="page-description">Explore our premium VPN collection.</p>
+ <div id="paidList" class="vpn-list"></div>
+</main>
+<!-- NOTIFICATIONS -->
+<main id="notificationsPage" class="page">
+ <h2 class="page-title">SYSTEM ALERTS <i class="fa-regular fa-bell"></i></h2>
+ <div id="notificationList">
+  <div class="loading">
+   <i class="fa-solid fa-circle-notch fa-spin"></i>
+   Loading notifications...
+  </div>
+ </div>
+</main>
+<!-- ABOUT -->
+<main id="aboutPage" class="page">
+ <h2 class="page-title">ABOUT US</h2>
+ <div class="about-card">
+  <div class="about-logo">
+   <i class="fa-solid fa-shield-halved"></i>
+  </div>
+  <h2>YASSER TUNEL</h2>
+  <p>Discover free and premium VPN information through the YASSER TUNEL platform.</p>
+  <div class="about-credit">
+   <i class="fa-solid fa-code"></i>
+   POWERED BY YASSER TECH SOLUTIONS
+  </div>
+ </div>
+</main>
+<footer>
+ © 2026 <strong>YASSER TECH SOLUTIONS</strong><br>
+ YASSER TUNEL. ALL RIGHTS RESERVED.
+</footer>
+</div>
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+ <div class="nav-inner">
+  <button class="nav-item active" onclick="showPage('home')">
+   <i class="fa-solid fa-house"></i>Home
+  </button>
+  <button class="nav-item" onclick="showPage('free')">
+   <i class="fa-solid fa-wifi"></i>Free
+  </button>
+  <button class="nav-item" onclick="showPage('paid')">
+   <i class="fa-solid fa-crown"></i>Premium
+  </button>
+  <button class="nav-item" onclick="showPage('notifications')">
+   <i class="fa-regular fa-bell"></i>Alerts
+  </button>
+  <button class="nav-item" onclick="showPage('about')">
+   <i class="fa-regular fa-user"></i>About
+  </button>
+ </div>
+</nav>
+<!-- VPN DETAILS MODAL -->
+<div class="modal" id="vpnModal" onclick="closeModalOutside(event)">
+ <div class="modal-content">
+  <button class="modal-close" onclick="closeModal()">
+   <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div style="clear:both"></div>
+  <div class="vpn-icon">
+   <i class="fa-solid fa-shield-halved"></i>
+  </div>
+  <h2 id="modalName">VPN Name</h2>
+  <p id="modalDescription"></p>
+  <div class="modal-details">
+   <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+   <p><strong>Platform:</strong> <span id="modalPlatform"></span></p>
+   <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+  </div>
+  <button class="modal-action" id="modalDownload" disabled>
+   <i class="fa-solid fa-download"></i>
+   Download VPN
+  </button>
+ </div>
+</div>
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// =======================================
+// YASSER TUNEL - SUPABASE CONFIGURATION
+// =======================================
+const SUPABASE_URL = "https://ingqthmfyufkgtsidqfv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_zhoDTTBXrr9Rv4f9HwLLkg_nTrpBfWv";
+const db = window.supabase.createClient(
+ SUPABASE_URL,
+ SUPABASE_KEY
+);
+let vpnData = [];
+let notificationData = [];
+let selectedCategory = "All";
+// =======================================
+// MATRIX BACKGROUND
+// =======================================
+(function startMatrix(){
+ const canvas = document.getElementById("matrix");
+ const ctx = canvas.getContext("2d");
+ if(!ctx) return;
+ const characters = "01YASSERTECH<>[]{}";
+ const fontSize = 13;
+ let columns = 0;
+ let drops = [];
+ function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  columns = Math.floor(canvas.width/fontSize);
+  drops = Array(columns).fill(1);
+ }
+ function draw(){
+  ctx.fillStyle = "rgba(5,10,8,0.10)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#00ff9c";
+  ctx.font = fontSize+"px monospace";
+  for(let i=0;i<drops.length;i++){
+   const char = characters.charAt(
+    Math.floor(Math.random()*characters.length)
+   );
+   ctx.fillText(char,i*fontSize,drops[i]*fontSize);
+   if(drops[i]*fontSize>canvas.height && Math.random()>.975){
+    drops[i]=0;
+   }
+   drops[i]++;
+  }
+ }
+ resize();
+ let animationFrame;
+ let lastFrame = 0;
+ function animate(time){
+  if(time-lastFrame>65){
+   draw();
+   lastFrame=time;
+  }
+  animationFrame=requestAnimationFrame(animate);
+ }
+ if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  animate(0);
+ }
+ window.addEventListener("resize",resize);
+ document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){
+   cancelAnimationFrame(animationFrame);
+  }else if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+   animate(0);
+  }
+ });
+})();
+// =======================================
+// HELPERS
+// =======================================
+function escapeHTML(value){
+ return String(value ?? "").replace(/[&<>"']/g,char=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ }[char]));
+}
+function normalizeType(value){
+ return String(value || "").trim().toLowerCase();
+}
+function formatPrice(vpn){
+ if(normalizeType(vpn.type)==="free"){
+  return "FREE";
+ }
+ const amount=Number(vpn.price || 0);
+ if(!amount) return "Price not set";
+ return "TSh "+amount.toLocaleString("en-TZ");
+}
+function platformMatches(platform,selected){
+ return String(platform || "")
+  .toLowerCase()
+  .split(/[,/& ]+/)
+  .includes(selected.toLowerCase());
+}
+function safeDownloadURL(url){
+ try{
+  const parsed=new URL(url);
+  return parsed.protocol==="https:"
+   ? parsed.href
+   : "";
+ }catch{
+  return "";
+ }
+}
+// =======================================
+// VPN CARD
+// =======================================
+function createCard(vpn){
+ const paid=normalizeType(vpn.type)==="paid";
+ return `
+ <article class="vpn-card">
+  <div class="card-top">
+   <div class="vpn-icon">
+    <i class="fa-solid fa-shield-halved"></i>
+   </div>
+   <div class="vpn-info">
+    <h4>${escapeHTML(vpn.name)}</h4>
+    <p>${escapeHTML(vpn.platform || "All platforms")}</p>
+   </div>
+   <span class="tag ${paid?"paid":""}">
+    ${paid?"PREMIUM":"FREE"}
+   </span>
+  </div>
+  <div class="card-bottom">
+   <div class="price">
+    ${escapeHTML(formatPrice(vpn))}
+    <small>${paid?"Premium access":"Free access"}</small>
+   </div>
+   <button class="view-btn"
+    data-vpn-id="${escapeHTML(vpn.id)}">
+    VIEW DETAILS
+    <i class="fa-solid fa-arrow-right"></i>
+   </button>
+  </div>
+ </article>
+ `;
+}
+// =======================================
+// VPN CARD EVENT LISTENERS
+// =======================================
+["vpnList","freeList","paidList"].forEach(id=>{
+ document.getElementById(id).addEventListener("click",event=>{
+  const button=event.target.closest("[data-vpn-id]");
+  if(button){
+   showDetails(button.dataset.vpnId);
+  }
+ });
+});
+// =======================================
+// LOAD VPN FROM SUPABASE
+// =======================================
+async function loadVPNs(){
+ const list=document.getElementById("vpnList");
+ list.innerHTML=`
+  <div class="loading">
+   <i class="fa-solid fa-circle-notch fa-spin"></i>
+   Connecting...
+  </div>
+ `;
+ const {data,error}=await db
+  .from("vpns")
+  .select("*")
+  .eq("is_active",true)
+  .order("created_at",{ascending:false});
+ if(error){
+  console.error("VPN error:",error);
+  list.innerHTML=`
+   <div class="empty">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Unable to load VPNs. Please try again.
+   </div>
+  `;
+  return;
+ }
+ vpnData=data || [];
+ renderVPN();
+ renderFreeVPN();
+ renderPaidVPN();
+}
+// =======================================
+// HOME RENDER
+// =======================================
+function renderVPN(){
+ const search=document.getElementById("searchInput")
+  .value.trim().toLowerCase();
+ const filtered=vpnData.filter(vpn=>{
+  const name=String(vpn.name || "").toLowerCase();
+  const platform=String(vpn.platform || "").toLowerCase();
+  const category=String(vpn.category || "").toLowerCase();
+  const description=String(vpn.description || "").toLowerCase();
+  const matchesSearch=
+   name.includes(search) ||
+   platform.includes(search) ||
+   category.includes(search) ||
+   description.includes(search);
+  let matchesCategory=true;
+  if(selectedCategory==="Free" || selectedCategory==="Paid"){
+   matchesCategory=
+    normalizeType(vpn.type)===selectedCategory.toLowerCase();
+  }
+  else if(selectedCategory==="Android" || selectedCategory==="iOS"){
+   matchesCategory=platformMatches(vpn.platform,selectedCategory);
+  }
+  return matchesSearch && matchesCategory;
+ });
+ document.getElementById("vpnList").innerHTML=
+  filtered.length
+   ? filtered.map(createCard).join("")
+   : `
+    <div class="empty">
+     <i class="fa-solid fa-magnifying-glass"></i>
+     No VPN found.
+    </div>
+   `;
+ document.getElementById("listTitle").textContent=
+  selectedCategory==="All"
+   ?"Latest VPNs"
+   :selectedCategory+" VPNs";
+}
+// =======================================
+// CATEGORY FILTER
+// =======================================
+function filterCategory(category,button){
+ selectedCategory=category;
+ document.querySelectorAll(".category").forEach(btn=>{
+  btn.classList.remove("active");
+ });
+ if(button){
+  button.classList.add("active");
+ }
+ renderVPN();
+}
+// =======================================
+// FREE VPN
+// =======================================
+function renderFreeVPN(){
+ const items=vpnData.filter(vpn=>
+  normalizeType(vpn.type)==="free"
+ );
+ document.getElementById("freeList").innerHTML=
+  items.length
+   ?items.map(createCard).join("")
+   :`
+    <div class="empty">
+     <i class="fa-solid fa-wifi"></i>
+     No free VPN available.
+    </div>
+   `;
+}
+// =======================================
+// PREMIUM VPN
+// =======================================
+function renderPaidVPN(){
+ const items=vpnData.filter(vpn=>
+  normalizeType(vpn.type)==="paid"
+ );
+ document.getElementById("paidList").innerHTML=
+  items.length
+   ?items.map(createCard).join("")
+   :`
+    <div class="empty">
+     <i class="fa-solid fa-crown"></i>
+     No premium VPN available.
+    </div>
+   `;
+}
+// =======================================
+// VPN DETAILS
+// =======================================
+function showDetails(id){
+ const vpn=vpnData.find(item=>
+  String(item.id)===String(id)
+ );
+ if(!vpn) return;
+ document.getElementById("modalName").textContent=
+  vpn.name || "VPN";
+ document.getElementById("modalDescription").textContent=
+  vpn.description || "No description available.";
+ document.getElementById("modalCategory").textContent=
+  vpn.category || vpn.type || "General";
+ document.getElementById("modalPlatform").textContent=
+  vpn.platform || "All platforms";
+ document.getElementById("modalPrice").textContent=
+  formatPrice(vpn);
+ const button=document.getElementById("modalDownload");
+ const downloadURL=safeDownloadURL(vpn.download_url);
+ button.disabled=!downloadURL;
+ button.innerHTML=downloadURL
+  ?'<i class="fa-solid fa-download"></i> DOWNLOAD VPN'
+  :'<i class="fa-solid fa-link-slash"></i> DOWNLOAD UNAVAILABLE';
+ button.onclick=downloadURL
+  ?()=>{
+    window.open(downloadURL,"_blank","noopener,noreferrer");
+   }
+  :null;
+ document.getElementById("vpnModal").classList.add("show");
+ document.body.style.overflow="hidden";
+}
+function closeModal(){
+ document.getElementById("vpnModal").classList.remove("show");
+ document.body.style.overflow="";
+}
+function closeModalOutside(event){
+ if(event.target.id==="vpnModal"){
+  closeModal();
+ }
+}
+document.addEventListener("keydown",event=>{
+ if(event.key==="Escape") closeModal();
+});
+// =======================================
+// NOTIFICATIONS
+// =======================================
+async function loadNotifications(){
+ const container=document.getElementById("notificationList");
+ const {data,error}=await db
+  .from("notifications")
+  .select("*")
+  .eq("is_active",true)
+  .order("created_at",{ascending:false});
+ if(error){
+  console.error("Notification error:",error);
+  container.innerHTML=`
+   <div class="empty">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Unable to load notifications.
+   </div>
+  `;
+  return;
+ }
+ notificationData=data || [];
+ document.getElementById("notificationDot")
+  .classList.toggle("hidden",notificationData.length===0);
+ if(!notificationData.length){
+  container.innerHTML=`
+   <div class="empty">
+    <i class="fa-regular fa-bell"></i>
+    No new notifications.
+   </div>
+  `;
+  return;
+ }
+ container.innerHTML=notificationData.map(notice=>{
+  const date=notice.created_at
+   ?new Date(notice.created_at).toLocaleDateString()
+   :"";
+  return `
+   <div class="notice">
+    <div class="notice-icon">
+     <i class="fa-solid fa-bullhorn"></i>
+    </div>
+    <div>
+     <h4>${escapeHTML(notice.title)}</h4>
+     <p>${escapeHTML(notice.message)}</p>
+     <time>${escapeHTML(date)}</time>
+    </div>
+   </div>
+  `;
+ }).join("");
+}
+// =======================================
+// PAGE NAVIGATION
+// =======================================
+function showPage(page){
+ document.querySelectorAll(".page").forEach(p=>{
+  p.classList.remove("active");
+ });
+ document.querySelectorAll(".nav-item").forEach(n=>{
+  n.classList.remove("active");
+ });
+ const pageMap={
+  home:"homePage",
+  free:"freePage",
+  paid:"paidPage",
+  notifications:"notificationsPage",
+  about:"aboutPage"
+ };
+ const navIndex={
+  home:0,
+  free:1,
+  paid:2,
+  notifications:3,
+  about:4
+ };
+ const target=document.getElementById(pageMap[page]);
+ if(!target) return;
+ target.classList.add("active");
+ const navItems=document.querySelectorAll(".nav-item");
+ navItems[navIndex[page]].classList.add("active");
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+}
+// =======================================
+// INITIALIZE
+// =======================================
+async function initializeApp(){
+ await Promise.all([
+  loadVPNs(),
+  loadNotifications()
+ ]);
+}
+initializeApp();
+</script>
+</body>
+</html>
